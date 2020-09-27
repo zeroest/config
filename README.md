@@ -3,6 +3,10 @@
 
 My own tmux-config
 
+## Inspired by
+
+https://github.com/devtaste/tmux-config
+youtu.be/FdvjywJBQJg
 
 ## Setup
 
