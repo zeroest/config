@@ -3,10 +3,13 @@
 
 My own tmux-config
 
+
 ## Inspired by
 
 https://github.com/devtaste/tmux-config
+
 youtu.be/FdvjywJBQJg
+
 
 ## Setup
 
@@ -33,6 +36,7 @@ cd tmux-config
 
 ./install.sh
 ```
+
 
 ## Done
 
