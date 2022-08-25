@@ -41,3 +41,7 @@ cd tmux-config
 ## Done
 
 Enjoy your tmux
+
+## How to use tmux
+
+[tmux-basic-command](./tmux-basic-command.md)
