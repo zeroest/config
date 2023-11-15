@@ -22,6 +22,8 @@ Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/lambdalisue/suda.vim/' " Sudo
+" https://github.com/iamcco/markdown-preview.nvim
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " CTRL + m & CTRL + d
 
 set encoding=UTF-8
 
@@ -41,6 +43,10 @@ nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 nmap <F8> :TagbarToggle<CR>
+
+" markdown-preview
+nmap <C-m><C-d> :MarkdownPreview<CR>
+nmap <C-m><C-s> :MarkdownPreviewStop<CR>
 
 :set completeopt-=preview " For No Previews
 
