@@ -1,0 +1,39 @@
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+
+[alias]
+    # alias = "!git config --list | egrep '^alias.+'" # show list of alias
+    alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
+
+    s = status -s
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+
+    lg = log --all --decorate --graph --abbrev-commit --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    l = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'
+
+    b0 = "!git branch | awk '/^\\*/{print $2}'" # current branch name
+    back = "!git branch backup-`git b0`" # make backup branch
+    cleanbranch = "!git branch -d $(git branch --merged | grep -v '^\\*\\|\\<master$')" # delete branch, already merged
+
+    # ch = "!git checkout $(git branch | fzf)" # checkout with branch list
+    # ch = "!git checkout $(git branch -vv | grep -v '^\\*' | fzf | awk '{print $1}')"
+    ch = "!git checkout $(git bselect)"
+    bselect = "! # select branch with preview; \n\
+        f() { \
+            _height=$(stty size | awk '{print $1}');\
+            git branch | egrep -v '^\\*' | fzf --preview \"git l {1} | head -n $_height\"; \
+        }; f"
+
+    # a = "!git add $(git status -s | fzf -m | awk '{print $2}')" # interactive add, use 'TAB' to add file
+    a = "! # add files with fzf preview diffs; \n\
+        f() { \
+            _height=$(stty size | awk '{print $1}');\
+            git s | fzf -m --preview \"git diff {2} | head -n $_height | pygmentize\" | awk '{print $2}' | xargs git add; \
+        }; f" # need to install pygment -> pip3 install pygments
+
+# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+# https://johngrib.github.io/wiki/git-alias/
