@@ -1,7 +1,19 @@
 [core]
     editor = nvim
+    autocrlf = input
     excludesfile = ~/.gitignore
 
+# https://git-scm.com/docs/git-mergetool
+# https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
+[merge]
+	tool = nvimdiff
+[mergetool]
+    keepBackup = false
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+
+# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+# https://johngrib.github.io/wiki/git-alias/
 [alias]
     # alias = "!git config --list | egrep '^alias.+'" # show list of alias
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
@@ -34,6 +46,3 @@
             _height=$(stty size | awk '{print $1}');\
             git s | fzf -m --preview \"git diff {2} | head -n $_height | pygmentize\" | awk '{print $2}' | xargs git add; \
         }; f" # need to install pygment -> pip3 install pygments
-
-# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
-# https://johngrib.github.io/wiki/git-alias/
