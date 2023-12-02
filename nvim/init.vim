@@ -1,7 +1,8 @@
-:set number
-:set relativenumber
+:set number " :set nu <> :set nu!
+:set expandtab " :set et
+:set relativenumber " :set rnu <> :set rnu!
 :set autoindent
-:set tabstop=4
+:set tabstop=4 " :set ts=4
 :set shiftwidth=4
 :set smarttab
 :set softtabstop=4
