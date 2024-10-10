@@ -15,6 +15,7 @@ Ctrl + b
 
 모든 tmux 명령어 앞에 해당 `Ctrl + b` prefix를 붙인다. (tmux 명령어 임을 선언한다)
 
+![Cheat Sheet](./tmux_cheat.png)
 
 ## Session
 
